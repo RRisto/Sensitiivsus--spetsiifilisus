@@ -344,7 +344,7 @@ Joonisel kujutatud olukorra puhul on testi statistiline jõud `r power`, mis on 
 
 ##Kokkuvõte
 
-Loodan, et suutsin pisut selgemaks statistilise testimise tagamaid ja köögipoolt. Tegemist on väga lihtsustatud ja pinnapealse kirjatükiga, kuid enne kui hakata raketti ehitama, tuleb arusaada, mis põhiõttel asi töötab. Kui tahad näha graafikute ja tabelite loomiseks kasutatud koodi, siis selle leiad [siit](https://github.com/RRisto/Sensitiivsus--spetsiifilisus/ "https://github.com/RRisto/Sensitiivsus--spetsiifilisus/").
+Loodan, et suutsin pisut selgemaks statistilise testimise tagamaid ja köögipoolt. Tegemist on väga lihtsustatud ja pinnapealse kirjatükiga, kuid enne kui hakata raketti ehitama, tuleb arusaada, mis põhiõttel asi töötab. Kui tahad näha graafikute ja tabelite loomiseks kasutatud koodi, siis selle leiad siit: https://github.com/RRisto/Sensitiivsus--spetsiifilisus/ 
 
 ##Kasutatud kirjandus
 
