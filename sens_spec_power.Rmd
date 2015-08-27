@@ -7,16 +7,16 @@ output: html_document
 
 ##Sissejuhatus
 
-Käesoleva kirjatüki eesmärk on tõsta katet statistikas tuntud mõistetelt nagu tundlikkus ja spetsiifilisus. Üritan joonistega (vähemalt minul on visuaalselt asjadest lihtsam aru saada, kui ainult valemeid vaadates) näidata, mida need mõisted endast kujutavad ning natukene ka uurida, mis ühe või teise näitaja suurust mõjutab. Kirjatüki lugemine tuleb kasuks, kui arst on teinud sulle kunagi mõne analüüsi või oled lugenud mõne kollasema väljaande nn teadusartikleid (näiteks "Teaduslikult tõestatud: täiskuu mõjutab inimesi - ajab pisut pööraseks!", "Kanep ravib vähki").
+Käesoleva kirjatüki eesmärk on tõsta katet statistikas tuntud mõistetelt nagu tundlikkus ja spetsiifilisus. Üritan joonistega (vähemalt minul on visuaalselt asjadest lihtsam aru saada, kui ainult valemeid vaadates) __endale__ selgitada, mida need mõisted endast kujutavad ning natukene ka uurida, mis ühe või teise näitaja suurust mõjutab. Kui suudan mõisteid avada ka kellegi teise jaoks, on tegemist lisaboonusega. Kirjatüki lugemine tuleb kasuks, kui arst on teinud sulle kunagi mõne analüüsi või oled lugenud mõne kollasema väljaande nn teadusartikleid (näiteks "Teaduslikult tõestatud: täiskuu mõjutab inimesi - ajab pisut pööraseks!", "Kanep ravib vähki").
 
 ##Algus
 
-Oletame, et meid huvitab, kuidas eristada terveid inimesi neist, kellel on haigus (kuna ise arst pole, siis ei hakka tõe huvides ka ühtegi konkreetset haigust aluseks võtma, seda enam, et __andmed on selles kirjatükis simuleeritud__). Selleks, et haigust määrata, mõõdetakse veres oleva aine (markeri) Y kogust.
+Oletame, et meid huvitab, kuidas eristada terveid inimesi neist, kellel on haigus (kuna ise arst pole, siis ei hakka tõe huvides ka ühtegi konkreetset haigust aluseks võtma, seda enam, et __andmed selles kirjatükis on simuleeritud__). Selleks, et haigust määrata, mõõdetakse veres oleva aine (markeri) Y kogust.
 
-Algselt paneme paika 0-hüpoteesi: haigete ja tervete Y-i kogustes ei ole erinevusi.
-Paneme paika ka alternatiivse hüpoteesi: haigete Y-i kogused on suuremad kui tervetel (lihtsuse huvides määran ka suuna, mitte ei ütle, et lihtsalt on erinev kogus, mis võib tähendada ka väiksemat kogust).
+Algselt paneme paika __0-hüpoteesi: haigete ja tervete Y-i kogustes ei ole erinevusi__.
+Paneme paika ka __alternatiivse hüpoteesi (hüpotees, mis meile tegelikult huvi pakub): haigete Y-i kogused on suuremad kui tervetel__ (lihtsuse huvides määran efekti ka suuna, mitte lihtsalt ei ütle, et kogus on erinev).
 
-Tervete inimeste puhul (10 000 proovi) on aine Y koguste jaotus selline (lihtsuse huvides oletan, et see jaguneb vastavalt normaaljaotusele):
+Tervete inimeste puhul (10 000 proovi) on aine Y koguste jaotuse histogramm selline (lihtsuse huvides oletan, et see jaguneb vastavalt normaaljaotusele):
 
 
 ```{r, cache=TRUE, echo=FALSE}
@@ -107,12 +107,12 @@ graafik(andmetabel())+
     
 ```
 
-Kuhu nüüd joon tõmmata? Kas nüüd on ka nullhüptees ümberlükatud? Õige vastus on, et oleneb olukorrast. Mis enne tegemata jäi, oli meile sobiva piiri seadmine, kui palju vigu me talume. Ma võtan aluseks tavaliselt näidetes kasutatava piiri, kus 95% tervetest jääb vasakule poole. Sel juhul ainult 5% tervetest klassifitseeritakse haigeteks (nende puhul tehakse I tüüpi viga). __I tüüpi viga näitab, kui suur on tõenäosus, et leitakse erinevus näitajate vahel, kuigi erinevust tegelikkuses ei eksisteeri (tervete osakaal, kelle puhul test näitab, et nad on haiged)__. Joonisel kujutatud piiri järgi on ainult 5% terveid, keda test näitab haigetena. Need 5% on joonisel sinised ning neid kutsutakse valepositiivseteks (test on nende puhul positiivne ehk näitab et nad on haiged, kuigi tegelikult on terved). [Üldjuhul](https://en.wikipedia.org/wiki/P-value, "https://en.wikipedia.org/wiki/P-value")  seataksegi I tüüpi vea piiriks 5% või 1% (ja kui küsida miks, siis ega erilist põhjendust olegi, võiks öelda, et traditsioon lihtsalt). 
+Kuhu nüüd joon tõmmata? Kas nüüd on ka nullhüptees ümberlükatud? Õige vastus on, et oleneb olukorrast. Et sellele küsimusele vastata, peame seadme paika veapiiri, mida talume (__veapiir tuleb tegelikult enne andmete kogumist paika panna, mitte üritada seda andmetele peale vaadates kohendada__). Ma võtan aluseks tavaliselt näidetes kasutatava piiri, kus 95% tervetest jääb vasakule poole (nad klassifitseeritakse terveks). Sel juhul ainult 5% tervetest klassifitseeritakse haigeteks (nende puhul tehakse I tüüpi viga). __I tüüpi viga näitab, kui suur on tõenäosus, et leitakse erinevus näitajate vahel, kuigi erinevust tegelikkuses ei eksisteeri (tervete osakaal, kelle puhul test näitab, et nad on haiged)__. Joonisel kujutatud piiri järgi on ainult 5% terveid, keda test näitab haigetena. Need 5% on joonisel sinised ning neid kutsutakse valepositiivseteks (test on nende puhul positiivne ehk näitab et nad on haiged, kuigi tegelikult on terved). [Üldjuhul](https://en.wikipedia.org/wiki/P-value "https://en.wikipedia.org/wiki/P-value")  seataksegi I tüüpi vea piiriks 5% või 1% (ja kui küsida miks, siis ega erilist põhjendust olegi, võiks öelda, et traditsioon lihtsalt). 
 
-##Asja teine külg 
-Kuid sellest ei piisa. Me teame, kui suur on tõenäosus, et konkreetne Y-i kogus on pärit tervete grupist, kui Y-i kogus on suurem sinise joonega märgitud piirist (maksimaalselt on see 5%). __Kuid, kui suur on tõenäosus, et konkreetne üle sinise joone olev Y-i kogus on pärit haigete grupist?__ Mõnest muust grupist? Selle põhjal, et vaatlus ei kuulu tõenäoliselt tervete gruppi, ei saa järeldada, et see kuulub haigete gruppi (see oleks sama, kui hommikul peavaluga üles ärgates teha järeldus, et sul on ajuvähk. Aga äkki lihtsalt pohmell?). Kahjuks tehakse seda päris elus [tihti](http://www.nature.com/news/scientific-method-statistical-errors-1.14700, "http://www.nature.com/news/scientific-method-statistical-errors-1.14700").
+##Asja teine külg ja point
+Kuid sellest ei piisa. Me teame, kui suur on tõenäosus, et terve Y-i kogus on üle sinise joone  (maksimaalselt on see 5%, mis on meie talutava vea piires). __Kuid, kui suur on tõenäosus, et konkreetne üle sinise joone olev Y-i kogus on pärit haigete grupist?__ Mõnest muust grupist? Selle põhjal, et vaatlus ei kuulu tõenäoliselt tervete gruppi, ei saa järeldada, et see kuulub haigete gruppi (see oleks sama, kui hommikul peavaluga üles ärgates teha järeldus, et sul on ajuvähk. Aga äkki lihtsalt pohmell?). Kahjuks tehakse seda päris elus [tihti](http://www.nature.com/news/scientific-method-statistical-errors-1.14700 "http://www.nature.com/news/scientific-method-statistical-errors-1.14700").
 
-Siin tuleb mängu asja teine külg, ehk II tüüpi viga. __II tüüpi viga ehk tõenäosus, et test ei näita erinevust, kuigi see tegelikult eksisteerib (haigete osakaal, kelle puhul test näitab, et nad on terved)__. Joonisel tähistab seda punane ala (valenegatiivsed: need, kelle puhul test näitab, et nad on terved, kuid tegelikult on nad haiged). Silmaga vaadates on näha, et selle vea tõenäosus tunduvalt suurem, kui oli I tüüpi veal (5%). Kui suur täpselt, näitab järgmine tabel:
+Siin tuleb mängu asja teine külg, ehk II tüüpi viga. Enne seda on meil vaja koguda paras hulk (meie näites 10 000) Y-i proove haigetelt. __II tüüpi viga ehk tõenäosus, et test ei näita erinevust, kuigi see tegelikult eksisteerib (haigete osakaal, kelle puhul test näitab, et nad on terved)__. Joonisel tähistab seda punane ala (valenegatiivsed: need, kelle puhul test näitab, et nad on terved, kuid tegelikult on nad haiged). Silmaga vaadates on näha, et selle vea tõenäosus tunduvalt suurem, kui oli I tüüpi veal (5%). Kui suur täpselt, näitab järgmine tabel, koos muude huvipakkuvate näitajatega:
 ```{r, message=FALSE, warning=FALSE, cache=TRUE, echo=FALSE}
 tabel=function(data=data, qt=0.95) {
     sub2=subset(data, name=="terved", select= c(value))
@@ -126,8 +126,8 @@ tabel=function(data=data, qt=0.95) {
     #valengeatiivsed (need, kes on haiged, kuid test näitab tervena)
     falseneg=nrow(subset(data, name=="haiged" & value<=piir))
     Näitaja=c("sensitiivsus (statistiline jõud)", "spetsiifilisus", 
-              "valepositiivsete määr (I tüüpi viga)", 
-              "valenegatiivsete määr (II tüüpi viga)",
+              "valepositiivsete määr (I tüüpi vea määr)", 
+              "valenegatiivsete määr (II tüüpi vea määr)",
               "positiivne ennustatav väärtus", 
             "negatiivne ennustatav väärtus")
     Väärtus=c(round(truepos/(falseneg+truepos),3),
@@ -151,7 +151,7 @@ negatpred=tabel1[6,2]
 
 ```
 
-- Testi __sensitiivsus (testi statistiline jõud)__ on `r sensitiivsus` ehk `r paste0(sensitiivsus*100, "%")` haigetel on Y-i kogus suurem, kui sinisega märgitud joon. Kui inimene on haige, siis suudame `r paste0(sensitiivsus*100, "%")` juhtudest teda praeguse testiga haigeks klassifitseerida. Ei ole just üleliia kõrge näitaja. Teadlaste hulgas on [arusaam](http://www.statisticsdonewrong.com/power.html, "http://www.statisticsdonewrong.com/power.html"), et see näitaja võiks olla vähemalt 0.8 (80%).
+- Testi __sensitiivsus (testi statistiline jõud)__ on `r sensitiivsus` ehk `r paste0(sensitiivsus*100, "%")` haigetel on Y-i kogus suurem, kui sinisega märgitud joon. Kui inimene on haige, siis suudame `r paste0(sensitiivsus*100, "%")` juhtudest teda praeguse testiga haigeks klassifitseerida. Ei ole just üleliia kõrge näitaja. Teadlaste hulgas on [arusaam](http://www.statisticsdonewrong.com/power.html "http://www.statisticsdonewrong.com/power.html"), et see näitaja võiks olla vähemalt 0.8 (80%).
 
 - __Spetsiifilisus__ on `r spetsiifilisus` ehk kui inimene on terve, siis `r paste0(spetsiifilisus*100, "%")` juhtudest suudame teda terveks klassifitseerida (`r paste0(spetsiifilisus*100, "%")` tervetel on Y-i kogus väiksem, kui sinise joonega määratud piir).
 
@@ -159,13 +159,13 @@ negatpred=tabel1[6,2]
 
 - __Valenegatiivsete määr (II tüüpi vea tõenäosus)__ kordame uuesti üle: haiged, kelle puhul test näitab, et nad on terved. Leitakse nii: 1 - sensitiivsus. Käesoleval juhul `r valenegat` ehk `r paste0(valenegat*100, "%")`.
 
-- __Positiivne ennustatav väärtus__ ehk tõenäosus, et inimene on ka tegelikult haige, kui test seda näitab. Käesolevas näites, kui test näitab, et inimene on haige, siis `r paste0(positpred*100, "%")` juhtudel ta ka tegelikult on haige.
+- __Positiivne ennustatav väärtus__ ehk tõenäosus, et inimene on ka tegelikult haige, kui test seda näitab. Kui test näitab, et inimene on haige, siis `r paste0(positpred*100, "%")` juhtudel ta ka tegelikult on haige.
 
-- __Negatiivne ennustatav väärtus__ ehk tõenäosus, et kui test näitab, et inimene on terve, siis ta seda ka tegelikult on. Käesolevas näites, et kui test näitab, et inimene on terve, siis `r paste0(negatpred*100, "%")` juhtudel ta ka tegelikult on terve.
+- __Negatiivne ennustatav väärtus__ ehk tõenäosus, et kui test näitab, et inimene on terve, siis ta seda ka tegelikult on. Kui test näitab, et inimene on terve, siis `r paste0(negatpred*100, "%")` juhtudel ta ka tegelikult on terve.
 
 ##Harutame asja lahti tabelina
 
-Kui eelnev jäi segaseks, siis ehk aitab tabel asja selgitada:
+Kui eelnev jäi segaseks, siis ehk aitab tabel koos järgnevate selgitustega asja selgitada:
 ```{r, echo=FALSE, cache=TRUE}
 population=20000
 spec=spetsiifilisus
@@ -184,25 +184,23 @@ oigeneg=test_summary[2,3]
 
 ```
 
-Tegemist on eelmise joonisega tabeli kujul. Kokku oli `r prettyNum(as.integer(population/2), big.mark=" ")` tervet ja `r prettyNum(as.integer(population/2), big.mark=" ")` haiget. Tervetest inimestest on test negatiivne (näitab, et on terved) `r oigeneg` puhul, ning `r valepos` puhul test valetab ja näitab, et inimene on haige. Haigete puhul on test aga ainult `r oigepos` puhul positiivne, ülejäänud `r valeneg` juhul test valetab, näidates, et inimene on terve. 
-Siit ka arvutusloogika eelnevate näitajate puhul:
+Tegemist on eelmise joonisega tabeli kujul. Kokku oli `r prettyNum(as.integer(population/2), big.mark=" ")` tervet ja `r prettyNum(as.integer(population/2), big.mark=" ")` haiget. Tervetest inimestest on test negatiivne (näitab, et on terved) `r oigeneg` puhul ning `r valepos` puhul test valetab, näidates, et inimene on haige (joonisel sinine ala). Haigete puhul on test aga ainult `r oigepos` puhul positiivne, ülejäänud `r valeneg` juhul test valetab, näidates, et inimene on terve (joonisel punane ala). 
+Siit ka arvutusloogika eelnevate näitajate puhul (samad näitajad ja arvud, mis eelmises tabelis, kuid seekord koos valemitega): 
 
-- __sensitiivsus (testi statistiline jõud)__: õiged positiivsed / (õiged positiivsed + valenegatiivsed) =
- `r oigepos` / (`r oigepos` + `r valeneg`) = `r oigepos / (oigepos+valeneg)`
- 
-- __spetsiifilisus__: õiged negatiivsed / (valepositiivsed + õiged negatiivsed) = `r oigeneg` / (`r valepos` + `r oigeneg`) = `r oigeneg / (valepos +  oigeneg)`
 
-- __valepositiivsete määr__ = 1 - spetsiifilisus = valepositiivsed / (valepositiivsed + õiged negatiivsed) = `r valepos` / (`r valepos` + `r oigeneg`) = `r valepos / ( valepos+ oigeneg)`
 
-- __valenegatiivsete määr__ = 1 - sensitiivsus = valenegatiivsed / (õiged positiivsed + valed negatiivsed) = `r valeneg` / (`r valeneg` + `r oigepos`) = `r valeneg/ ( oigepos +  valeneg)`
+$$ \begin{array}{ll} 
+- \mathbf {sensitiivsus\;(testi \; statistiline \;jõud): } \frac{õiged \; positiivsed}{(õiged\; positiivsed + valenegatiivsed)} = \frac{`r oigepos`}{ (`r oigepos` + `r valeneg`)} = `r oigepos / (oigepos+valeneg)`  \\  
+- \mathbf {spetsiifilisus:} \frac{õiged \; negatiivsed}{(õiged\; negatiivsed + valepositiivsed)} = \frac{`r oigeneg`}{ (`r oigeneg` + `r valepos`)} = `r oigeneg / (valepos+oigeneg)`  \\
+- \mathbf {valepositiivsete \; määr: } 1 - spetsiifilisus =\frac{valepositiivsed}{(valepositiivsed + õiged \;negatiivsed)} = \frac{`r valepos`}{ (`r valepos` + `r oigeneg`)} = `r valepos / (valepos+oigeneg)`  \\
+- \mathbf {valenegatiivsete \; määr: } 1 - sensitiivsus =\frac{valenegatiivsed}{(valenegatiivsed + õiged \;negatiivsed)} = \frac{`r valeneg`}{ (`r valeneg` + `r oigepos`)} = `r valeneg / (valeneg+oigepos)`  \\
+- \mathbf {positiivne \; ennustatav \; väärtus: } \frac{õiged \; positiivsed}{(õiged \; positiivsed + valepositiivsed)} = \frac{`r oigepos`}{ (`r oigepos` + `r valepos`)} = `r round(oigepos / (oigepos+valepos),3)`   \\
+ - \mathbf {negatiivne \; ennustatav \; väärtus: } \frac{õiged \; negatiivsed}{(õiged \; negatiivsed + valenegatiivsed)} = \frac{`r oigeneg`}{ (`r oigeneg` + `r valeneg`)} = `r round(oigeneg / (oigeneg+valeneg),3)` 
+  \end{array} $$
 
-- __positiivne ennustatav väärtus__ = õiged positiivsed / (õiged positiivsed + valepositiivsed) = `r oigepos` / (`r oigepos` + `r valepos`) = `r round(oigepos / ( oigepos + valepos), 3)`
+Kui me nüüd teeme sulle testi ning saame Y-i koguseks 7 ühikut, siis meie [p-väärtus](https://en.wikipedia.org/wiki/P-value "https://en.wikipedia.org/wiki/P-value") (tõenäosus, et oled pärit tervete grupist) on alla seatud 0.05 (5%) piiri. Kokkuvõttes klassifitseeritakse sind haigeks (mis ei tähenda, et sa ei või tänu ebaõnnele ülla üks neist tervetest, kelle Y-i kogus on üle sinise joonega seatud piiri).
 
-- __negatiivne ennustatav väärtus__ = õiged negatiivsed / (õiged negatiivsed + valenegatiivsed) = `r oigeneg` / (`r oigeneg` + `r valeneg`) = `r round(oigeneg / ( oigeneg + valeneg),3)`
-
-Kui me nüüd teeme sulle testi ning saame Y-i koguseks 7 ühikut, siis meie [p-väärtus](https://en.wikipedia.org/wiki/P-value, "https://en.wikipedia.org/wiki/P-value") (tõenäosus, et oled pärit tervete grupist) on alla seatud 0.05 (5%) piiri (tõenäosus, et oled tervete grupist on alla 5%). Kokkuvõttes klassifitseeritakse sind haigeks (mis ei tähenda, et sa ei või tänu ebaõnnele ülla üks neist tervetest, kelle Y-i kogus on üle sinise joonega seatud piiri).
-
-Eelneva mõte oli näidata, et ükski test pole 100% täpne. Kui test oli positiivne, siis oled `r paste0(positpred*100, "%")` tõenäosusega haige, kui test negatiivne, siis `r paste0(negatpred*100, "%")` tõenäosusega terve Tihtilugu räägitakse ajakirjanduses, et p-väärtusest (kui see on madal, siis on ükskõik kui jabur hüpotees justkui tõestatud). P-väärtus näitab ainult seda, kui tõenäoline on, et konkreetne vaatlus on pärit algsest jaotusest (meie puhul tervete grupist). Kui see on madal (alla 5% või 1%), siis võime suhtelise kindlusega väita, et konkreetne Y-i kogus pole suure tõenäosusega algsest jaotusest pärit. Ja ainult seda! P-väärtus mitte midagi selle kohta, kas konkreetne Y-i kogus on pärit haigete grupist. Seda näitab testi statistiline jõud, mis meie puhul pole ülemäära suur (kui inimene on haige, siis ainult ligi 2/3 juhtudest suudab seda test näidata). 
+Eelneva mõte oli näidata, et ükski test pole 100% täpne. Kui test oli positiivne, siis oled `r paste0(positpred*100, "%")` tõenäosusega haige, kui test negatiivne, siis `r paste0(negatpred*100, "%")` tõenäosusega terve Tihtilugu räägitakse ajakirjanduses, et p-väärtusest (kui see on madal, siis on ükskõik kui jabur hüpotees justkui tõestatud). P-väärtus näitab ainult seda, kui tõenäoline on, et konkreetne vaatlus on pärit algsest jaotusest (meie puhul tervete grupist). Kui see on madal (alla 5% või 1%), siis võime suhtelise kindlusega väita, et konkreetne Y-i kogus pole suure tõenäosusega algsest jaotusest pärit. Ja ainult seda! P-väärtus ei näita mitte midagi selle kohta, kas konkreetne Y-i kogus on pärit haigete grupist. Seda näitab testi statistiline jõud, mis meie puhul pole ülemäära suur (kui inimene on haige, siis ainult ligi 2/3 juhtudest suudab seda test näidata). 
 
 
 Kui lähed järgmine kord arsti juurde ning ta teeb sulle mõne testi, siis küsi, mis on testi positiivne ennustatav väärtus (kui testi tulemus on positiivne) ja mis on testi negatiivne ennustatav väärtus (kui testi tulemus on negatiivne). 
@@ -210,7 +208,7 @@ Kui lähed järgmine kord arsti juurde ning ta teeb sulle mõne testi, siis küs
 ##Juhe kokku
 
 Kui eelnev oli segane, on mul positiivseid uudiseid, läheb aina hullemaks. 
-Vaatleme, kuidas mingi haiguse leviku määr mõjutab testi positiivset ja negatiivset ennustatavat väärtust. 
+Vaatleme, kuidas haiguse leviku määr mõjutab testi positiivset ja negatiivset ennustatavat väärtust. 
 
 ```{r, cache=TRUE, echo=FALSE}
 #funktsioon, mis arvutab pos ja neg ennustatava väärtuse
@@ -249,6 +247,7 @@ library(scales)
 ggplot(vastus, aes(x=ratio, y=value))+
     geom_line(aes(colour=variable), size=1)+
     xlab("haigete osakaal populatsioonist")+
+    ylab("tõenäosus, et oled haige/terve")+
     ylab("")+
     scale_y_continuous(labels=percent)+
     scale_x_continuous(labels=percent)+
@@ -258,13 +257,13 @@ ggplot(vastus, aes(x=ratio, y=value))+
     theme_minimal()
 ```
 
-Joonisel olevad arvutused on tehtud spetsiifilisusega `r spets` ja tundlikkusega `r sens`. Nagu näha, muutub positiivne ennustatav väärtus väikeseks, kui haigus on väga haruldane (mis on ka loogiline, mida haruldasem haiges, seda suurem ka tõenäosus, et mina olen terve). Negatiivne ennustatav väärtus muutub aga madalaks, kui haigus on väga leivnud (jällegi on see loogiline, kuna mida rohkem haigus on levinud, seda suurem ka tõenäosus, et mina olen haige). 
+Joonisel olevad ennustatavad väärtused on arvutatud spetsiifilisusega `r spets` ja tundlikkusega `r sens`. Nagu näha, muutub positiivne ennustatav väärtus väikeseks, kui haigus on väga haruldane (mis on ka loogiline, mida haruldasem haiges, seda suurem ka tõenäosus, et mina olen terve). Negatiivne ennustatav väärtus muutub aga madalaks, kui haigus on väga levinud (jällegi on see loogiline, kuna mida rohkem haigus on levinud, seda suurem ka tõenäosus, et mina olen haige). 
 
-Ehk kui haigus on väga haruldane (näiteks 1% inimestest põeb seda), siis isegi kui testi tulemus on positiivne, on tõenäosus, et oled haige ainult umbes 14%. Sama on siis, kui haigus on väga leivnud (näiteks 99% inimestest põeb seda), siis negatiivse testi tulemuse korral on ainult umbes 5% tõenäosus, et oled terve. See on ka loogiline, kuna baasmäär on nii kõrge, et oleks üpris ebatõenäoline, et oled terve. Kui meil on aga rohkem infot sinu kohta, võib ka baasmäär muutuda (näiteks suitsetajate tõenäosus kopsuvähki haigestuda on oluliselt kõrgem kui mittesuitsetajatel).
+Ehk kui haigus on väga haruldane (näiteks 1% inimestest põeb seda), siis isegi kui testi tulemus on positiivne, on tõenäosus, et oled haige ainult 14%. Sama on juhul, kui haigus on väga levinud (näiteks 99% inimestest põeb seda), siis on negatiivse testi tulemuse korral ainult 5% tõenäosus, et oled terve. See on ka loogiline, kuna baasmäär on nii kõrge, et oleks üpris ebatõenäoline, et oled terve. Kui meil on aga rohkem infot sinu kohta, võib ka baasmäär muutuda (näiteks suitsetajate tõenäosus kopsuvähki haigestuda on oluliselt kõrgem kui mittesuitsetajatel). Seega tuleb lisaks testi tulemusele teada ka mingi nähtuse levikut (näiteks kui suudan testiga tõestada, et homöopaatia töötab, siis kuna eelnev baasmäär on väga madal, on testi tulemus tõenäoliselt lihtsalt juhuslik eksimus).
 
 ##Statistiline jõud
 
-Vaatamine, millest sõltub statistiline jõud (ehk sensitiivsus - tõenäosus, kui tervete ja haigete vahel on erinevus, siis meie test seda ka näitab). Algne statistiline jõud on `r sensitiivsus`.
+Uurime, millest sõltub statistiline jõud (ehk sensitiivsus - tõenäosus, kui tervete ja haigete vahel on erinevus, siis meie test seda ka näitab). Algne statistiline jõud on `r sensitiivsus`. Vaatame, mis juhtub statistilise jõuga, kui muuta ühte näitajat korraga.
 
 Kui me muudame haigete keskmise Y-i koguse 6-lt ühikult 8 ühikuni, siis saame sellise joonise:
 ```{r, cache=TRUE, echo=FALSE, message=FALSE, warning=FALSE}
@@ -283,7 +282,6 @@ graafik(andmed)+
 power=tabel(andmed)[1,2]
 ```
 
-Joonisel kujutatud olukorra puhul on testi statistiline jõud `r power`, mis on tunduvalt suurem algsest. Seega __mida suurem on erinevus kahe grupi vahel, seda suurem on statistiline jõud (võime neid erinevusi leida)__.
 
 Kui aga muuta ühe haigete Y-i koguste standardhälve ühelt ühikult 2-le, saame sellise joonise:
 ```{r, cache=TRUE, echo=FALSE, message=FALSE, warning=FALSE}
@@ -342,3 +340,16 @@ power=tabel(andmed, qt=0.99)[1,2]
 ```
 
 Joonisel kujutatud olukorra puhul on testi statistiline jõud `r power`, mis on algsest tunduvalt väiksem. Seega __mida väiksem on I tüüpi vea piirmäär, seda väiksem on statistiline jõud__.
+
+
+##Kokkuvõte
+
+Loodan, et suutsin pisut selgemaks statistilise testimise tagamaid ja köögipoolt. Tegemist on väga lihtsustatud ja pinnapealse kirjatükiga, kuid enne kui hakata raketti ehitama, tuleb arusaada, mis põhiõttel asi töötab. Kui tahad näha graafikute ja tabelite loomiseks kasutatud koodi, siis selle leiad [siit](https://github.com/RRisto/Sensitiivsus--spetsiifilisus/ "https://github.com/RRisto/Sensitiivsus--spetsiifilisus/").
+
+##Kasutatud kirjandus
+
+[P-value. Wikipedia.](https://en.wikipedia.org/wiki/P-value "https://en.wikipedia.org/wiki/P-value")
+
+[Scientific method: Statistical errors. Nature](http://www.nature.com/news/scientific-method-statistical-errors-1.14700 "http://www.nature.com/news/scientific-method-statistical-errors-1.14700").
+
+[Statistical power and underpowered statistics. Statistics done wrong.](http://www.statisticsdonewrong.com/power.html "http://www.statisticsdonewrong.com/power.html")
