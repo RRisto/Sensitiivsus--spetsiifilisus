@@ -1,5 +1,5 @@
 ---
-title: "Tundlikkus ja spetsiifilisus"
+title: "Statistiline testimine"
 author: "Risto Hinno"
 date: "August, 2015"
 output: html_document
@@ -7,7 +7,7 @@ output: html_document
 
 ##Sissejuhatus
 
-Käesoleva kirjatüki eesmärk on tõsta katet statistikas tuntud mõistetelt nagu tundlikkus ja spetsiifilisus. Üritan joonistega (vähemalt minul on visuaalselt asjadest lihtsam aru saada, kui ainult valemeid vaadates) __endale__ selgitada, mida need mõisted endast kujutavad ning natukene ka uurida, mis ühe või teise näitaja suurust mõjutab. Kui suudan mõisteid avada ka kellegi teise jaoks, on tegemist lisaboonusega. Kirjatüki lugemine tuleb kasuks, kui arst on teinud sulle kunagi mõne analüüsi või oled lugenud mõne kollasema väljaande nn teadusartikleid (näiteks "Teaduslikult tõestatud: täiskuu mõjutab inimesi - ajab pisut pööraseks!", "Kanep ravib vähki").
+Käesoleva kirjatüki eesmärk on tõsta katet statiliselt testimiselt. Üritan joonistega (vähemalt minul on visuaalselt asjadest lihtsam aru saada, kui ainult valemeid vaadates) __endale__ selgitada, mida testimine ja sellega seotud mõisted endast kujutavad. Kui suudan statistilist testimist ka kellegi teise jaoks pisut selgemaks teha, on tegemist lisaboonusega. Kirjatüki lugemine tuleb kasuks, kui arst on teinud sulle kunagi mõne analüüsi või oled lugenud mõne kollasema väljaande nn teadusartikleid (näiteks "Teaduslikult tõestatud: täiskuu mõjutab inimesi - ajab pisut pööraseks!", "Kanep ravib vähki").
 
 ##Algus
 
